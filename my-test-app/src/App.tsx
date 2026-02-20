@@ -1,33 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [result, setResult] = useState(100)
+
+  useEffect(() => {
+    console.log(`Текущее значение счетчика: ${result}`)
+  }, [result])
+
+
+  useEffect(() => {
+    console.log(`Страница открыта/обновлена: `, new Date().toString())
+  }, [])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <h1>Calculator</h1>
+
+      <div>Current value is {result}</div>
+
+      <div className="calculatorButtons">
+        
+        <button onClick={() => setResult(result + 5)}>
+          + 5
         </button>
+        <button onClick={() => setResult(result - 5)}>
+          - 5
+        </button>
+        <button onClick={() => setResult(result * 5)}>
+          * 5
+        </button>
+        <button onClick={() => setResult(result / 5)}>
+          \ 5
+        </button>
+        <button onClick={() => setResult(100)}>
+          Сброс
+        </button>
+      </div>
+      <div className='footer'>
+        <h3>
+          Кондурова Мария
+        </h3>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Группа 3834504/20001
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
